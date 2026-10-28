@@ -5,8 +5,13 @@ Elektron Syntakt while retaining stock IDs 0–44. Initial integration should re
 an existing renderer to prove the lifecycle, rather than replace SY TONE or ship
 a new sound design first.
 
-**Documentation and an offline source API only — not an installable firmware mod.**
+**Research documentation and a source-level DSP API; no installable firmware mod is included.**
 **RESEARCH ONLY / DO NOT FLASH.** No firmware image or proprietary code is distributed.
+
+The public checker can verify selected stock firmware metadata. This repository
+does **not** contain enough source, private evidence or patch data to reproduce
+the frozen candidate. Artifact hashes identify the private files; they do not
+make those files available or validate their behavior.
 
 ## Start here
 
@@ -22,13 +27,13 @@ a new sound design first.
 ## Current status
 
 | Area | Qualification |
-|---|---|
-| Distinct MAIN raw ID45 and recorded menu/metadata edits | Confirmed locally by static analysis |
-| Public ID45 → compact selector45 → e12 | Strongly supported composed path; peer timing/coherency unobserved |
-| Eight native parameter fields and local DSP consumers | Confirmed locally; complete transport strongly supported |
-| Sound-v7 current-Kit Machine-byte save/load | Confirmed on the recovered accepted-record route |
+| --- | --- |
+| Distinct MAIN raw ID 45 and recorded menu/metadata edits | Confirmed locally by static analysis |
+| Public ID 45 → compact selector 45 → implementation family e12 | Strongly supported composed path; peer timing/coherency unobserved |
+| Eight native parameter fields and local DSP consumers | Confirmed by static analysis; complete transport strongly supported |
+| Sound-v7 current-Kit Machine-byte save/load | Confirmed by static analysis on the recovered accepted-record route |
 | Standalone Sound application and Pattern Machine restoration | Unproven |
-| Enter/leave45, Sound-lock precedence, complete p-lock lifecycle | Not verified end-to-end |
+| Enter/leave 45, Sound-lock precedence, complete p-lock lifecycle | Not verified end-to-end |
 | Arbitrary native DSP installation | Blocked / unproven |
 | Device acceptance, audibility and runtime performance | Untested / unproven |
 
@@ -42,21 +47,26 @@ Python standard library only. Supply your own legitimately extracted **stock 1.4
 sections; no images are included here:
 
 ```sh
-python3 tools/check_stock_metadata.py --main /private/main.bin --section7 /private/section7.bin
+python3 tools/check_stock_metadata.py --main path/to/main.bin --section7 path/to/section7.bin
 ```
 
-The tool checks exact input hashes and selected metadata. It does not patch, build,
-repack, flash, generate audio, connect to hardware or establish a complete Machine
-lifecycle. No dependencies or global setup are required.
+The tool checks exact input hashes and selected metadata. It does not validate the
+private candidate or a complete Machine lifecycle, and it does not write firmware
+or access hardware. No dependencies or global setup are required.
 
 ## Community context
 
 The handoff is intended to complement [SyntHack OS](https://github.com/Angelo-politek/Synthack-OS)
 and [SY FM4](https://github.com/Rxuting/sy-fm4), not duplicate their frameworks.
-FM4 extends existing Machine4; this research concerns separate public identity45.
-Resource allocation, shared CPU2 loading and version ports should be coordinated
+FM4 extends existing Machine 4; this research concerns separate public identity 45.
+Resource allocation, shared CPU 2 loading and version ports should be coordinated
 with their maintainers. See the pinned source versions in
 [UPSTREAM_SOURCES.json](metadata/UPSTREAM_SOURCES.json).
+
+The first integration experiment should register the independent identity with
+borrowed metadata and an existing renderer, then test selection, transitions and
+persistence in the community emulator framework. Custom DSP installation can be
+qualified separately. See the handoff's recommended implementation sequence.
 
 ## License and exclusions
 

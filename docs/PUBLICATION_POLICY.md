@@ -2,7 +2,7 @@
 
 This is a deliberately small sanitized export, not a dump of the research directory.
 The original private workspace and its frozen artifacts were not moved, committed
-or altered by publication. The803-file census names private sources; their text,
+or altered by publication. The 803-file census names private sources; their text,
 instruction listings, arrays and binaries are not published by this repository.
 
 ## Included

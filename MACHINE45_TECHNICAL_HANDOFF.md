@@ -7,7 +7,6 @@ Audit date: **2026-10-28**, Asia/Shanghai. Local firmware: **Syntakt OS 1.41**.
 > Public sanitized export of a private 2026-10-28 audit. Original source reports,
 > disassembly and binaries are not included. Source-catalog links identify private
 > evidence by path and hash; they do not expose its contents or independently verify it.
-> The public repository has publication history; the older private workspace had none.
 
 ## 1. What this handoff establishes
 
@@ -31,7 +30,7 @@ has a separate unresolved storage/loader boundary.
 ### Verification vocabulary
 
 | Label | Meaning in this handoff |
-|---|---|
+| --- | --- |
 | **Confirmed by static analysis** | Existing bytes, decoded instructions, concrete object/index expressions, or a bounded symbolic argument support the stated local claim. |
 | **Verified in emulator** | A named emulator executed the relevant firmware path. No local whole-device Machine45 emulator run was recovered or performed. The bounded host opcode interpreter is identified separately, not presented as a booted Syntakt. |
 | **Verified on hardware** | Device execution was observed. **None for this local Machine45 project.** External authors' FM4 reports are explicitly attributed. |
@@ -43,10 +42,11 @@ and the actual frozen bytes take precedence; see the correction table in §11.
 
 ## 2. Audit provenance and immutable inputs
 
-The original private research directory was **not a Git repository**: `git rev-parse --show-toplevel`
-returns exit 128, and no nested `.git` metadata was found. Local commit history
-therefore cannot be reconstructed. Provenance comes from saved manifests, scripts,
-disassembly, SHA-256 ledgers and dated reports; it must not be described as Git history.
+At the time of the private audit, the research directory was **not a Git repository**:
+`git rev-parse --show-toplevel` returned exit 128, and no nested `.git` metadata was
+found. Its research commit history therefore cannot be reconstructed. Provenance
+comes from saved manifests, scripts, disassembly, SHA-256 ledgers and dated reports;
+it must not be described as Git history.
 
 The audit inventory covers **1,754 research/source/output files**, including **803
 evidence files**, outside dependency/toolchain/cache directories. Existing full and
@@ -57,26 +57,26 @@ documents. See [complete index](EVIDENCE_INDEX.md)
 and the [read-only audit results](metadata/VALIDATION_SUMMARY.json).
 
 | Private local artifact — never upload | Bytes | SHA-256 |
-|---|---:|---|
+| --- | ---: | --- |
 | Original `Syntakt_OS1.41.syx` | 2,571,424 | `8e2488f462c4a5656396a895f113bcd415e9900fa8709340dccf45d4cb9ed19e` |
 | Original extracted MAIN | 3,438,480 | `8cf2b4b4ea80d58953da46ca453328454fb3fca5cb5f844a2f7bad4b72241f53` |
-| Original extracted Section7 | 383,760 | `daf6451cf9587c0b628e901b7bb6b25f4e2633d448c534c0c181dd35ec783bc2` |
+| Original extracted Section 7 | 383,760 | `daf6451cf9587c0b628e901b7bb6b25f4e2633d448c534c0c181dd35ec783bc2` |
 | `build/Machine45_FULL_STATIC_BRIDGE_MAIN_RESEARCH_ONLY.bin` | 3,438,480 | `de897a43ff8499781821480c7c249394beb1792ab2652d057795087dbaa6e83d` |
 | `build/Section7_MACHINE45_V2_BRANCHLESS_RESEARCH_ONLY.bin` | 383,760 | `4d8bb919a2447edd67c8cd5b6b5607f1f2789dc0151169af29b959493e72f505` |
 | `build/Syntakt_OS1.41_Machine45_V2_BRANCHLESS_RESEARCH_ONLY_DO_NOT_FLASH.syx` | 5,645,856 | `94c59d048057a58ec3cb85b16ec9912e1d86cecb49d5d62f23ddc955ec121d6c` |
 
-Exact artifact links and the frozen validation record are in
-[the canonical V2 release state](docs/FROZEN_BASELINE.md).
+Artifact identifiers and a summary of the frozen validation scope are in
+[the public V2 baseline summary](docs/FROZEN_BASELINE.md).
 No existing binary was modified or regenerated during this audit.
 
 ## 3. Keep the identifier namespaces separate
 
 | Namespace | Existing meaning | ID 45 proposal |
-|---|---|---|
+| --- | --- | --- |
 | Public/runtime `machineType` | BYTE in a MAIN Sound/track payload, stock IDs 0–44 across digital and analog Machines | Preserve raw 45 as a distinct identity. |
-| Section7 raw selector | Signed BYTE input with a 46-entry mapping domain | Explicitly publish 45; do not assume a natural byte-for-byte bridge. |
+| Section 7 raw selector | Signed BYTE input with a 46-entry mapping domain | Explicitly publish 45; do not assume a natural byte-for-byte bridge. |
 | Implementation family `e` | Twelve existing prep/render families, 0–11 | Optional dedicated family 12; not public Machine ID 12. |
-| Parameter descriptor ID | Index in 505 records of 52 bytes | Initially borrow Machine0's eight descriptors. |
+| Parameter descriptor ID | Index in 505 records of 52 bytes | Initially borrow Machine 0's eight descriptors. |
 | Generic/internal parameter slot | Descriptor-derived payload/value-array index | Separate from knob ordinal, descriptor ID and Machine ID. |
 | Track/slot ordinal `t` | MAIN digital tracks 0–7 on the recovered compact path | Preserve the same ordinal through eight compact records. |
 
@@ -86,11 +86,11 @@ map to family 0 in this table; that does not make all stock Machines digital eng
 
 ### Address convention
 
-All local MAIN/Section7 executable VAs below use **`VA = file offset + 0x40000400`**,
+All local MAIN/Section 7 executable VAs below use **`VA = file offset + 0x40000400`**,
 big-endian ColdFire ISA-C/EMAC. These CPUs have distinct address spaces: identical
 numeric addresses do not mean the same storage. Some old MAIN listings were emitted
 with base `0x40000000`; add `0x400` to those listing labels before comparing them.
-The container's Section7 destination field is not itself proof of its linked VA.
+The container's Section 7 destination field is not itself proof of its linked VA.
 [Address normalization evidence](docs/SOURCE_CATALOG.md#source-a1ba1287be3d2fdc).
 
 ## 4. MAIN registration, runtime identity and metadata
@@ -121,19 +121,19 @@ against the original, with no unrecorded differences in the audit. These are a
 version-specific research manifest, **not a ready-to-merge SyntHack patch set**.
 
 | 1.41 VA / data interval | File offset / size | Semantic edit |
-|---|---|---|
+| --- | --- | --- |
 | `0x40026556` | `0x26156`, 2 B | MachineListView loop terminal 45 → 46, exposing candidate raw ID 45. |
-| `0x4007B9EA` | `0x7B5EA`, 30 B | Page accessor: IDs 0–44 unchanged, exact45 → donor page0, other >44 → row 44. |
+| `0x4007B9EA` | `0x7B5EA`, 30 B | Page accessor: IDs 0–44 unchanged, exact-45 → donor page 0, other >44 → row 44. |
 | `0x400A6422` | `0xA6022`, 2 B | Normalizer row bound 44 → 45. |
 | `0x400A644A` | `0xA604A`, 4 B operand | Normalizer base → `0x40344A48`. |
 | `0x400A647C` | `0xA607C`, 2 B | Compatibility lookup bound 44 → 45. |
 | `0x400A6494` | `0xA6094`, 4 B operand | Bounded compatibility reader base → `0x40344990`. |
 | `0x400A6522` | `0xA6122`, 2 B | Display-record row bound 44 → 45. |
 | `0x400A7018` | `0xA6C18`, 2 B | Accepted Sound/Track row load bound 46 → 47, retaining raw 45. |
-| `[0x4022C824,0x4022C8A8)` | `0x22C424`, 132 B | Existing display row 45 receives a copy of donor0 metadata. |
-| `[0x40344990,0x40344A48)` | `0x344590`, 184 B | 46 compatibility records; entries 0–44 retained, entry45 = entry0. |
-| `[0x40344A48,0x40345178)` | `0x344648`, 1,840 B | 46×10 descriptor-normalizer matrix; entry45 = entry0. |
-| `[0x400A4C7A,0x400A4D20)` | `0xA487A`, 166 B | In-place compact serializer rewrite with exact45 override. |
+| `[0x4022C824,0x4022C8A8)` | `0x22C424`, 132 B | Existing display row 45 receives a copy of donor 0 metadata. |
+| `[0x40344990,0x40344A48)` | `0x344590`, 184 B | 46 compatibility records; entries 0–44 retained, entry 45 = entry 0. |
+| `[0x40344A48,0x40345178)` | `0x344648`, 1,840 B | 46×10 descriptor-normalizer matrix; entry 45 = entry 0. |
+| `[0x400A4C7A,0x400A4D20)` | `0xA487A`, 166 B | In-place compact serializer rewrite with exact-45 override. |
 
 Evidence: [initial exact manifest](docs/SOURCE_CATALOG.md#source-df754e105bce6cae),
 [relocated data](docs/SOURCE_CATALOG.md#source-2de8b98f2a3d215e),
@@ -159,7 +159,7 @@ Important qualifications:
   the original image. [Independent metadata check](metadata/VALIDATION_SUMMARY.json).
 - The data relocation bytes were verified, but safe lifetime/mapping of that
   original-zero initialized-data/template area is **not hardware-qualified**.
-  Prefer an explicitly owned community resource, or narrow exact45 lookup aliasing.
+  Prefer an explicitly owned community resource, or narrow exact-45 lookup aliasing.
 - A second, unbounded compatibility predicate remains on its original base at
   `0x400A63D0`; changing every matching literal would alter unrelated behavior.
 - The old page-accessor CCR.X blocker is **RESOLVED_SAFE for the recovered caller
@@ -172,7 +172,7 @@ Important qualifications:
 
 The natural changed-payload → service-record → K refresh path remains **PARKED /
 UNPROVEN**. It is not the proof supporting the frozen candidate. In particular,
-opcode `0x30`, subtype4 from `0x40088D1C` was traced to **host-bound USB IN endpoint
+opcode `0x30`, subtype 4 from `0x40088D1C` was traced to **host-bound USB IN endpoint
 0x82**, not an internal service queue. Do not pursue a nonexistent host-handler edge.
 [Request/receiver reports](docs/SOURCE_CATALOG.md#source-618aca520a0685e2).
 
@@ -218,20 +218,20 @@ completion/coherency and device scheduling are **not yet verified**.
 ### FC045 is MMIO, not a callable renderer/transfer function
 
 The historical “FC045 primitive” label denotes inline eDMA programming. The matched
-MCF5441x layout gives **TCD47 = `0xFC0455E0`**; `SSRT` at `0xFC04401E` starts channel47.
+MCF5441x layout gives **TCD47 = `0xFC0455E0`**; `SSRT` at `0xFC04401E` starts channel 47.
 It has no four-argument function ABI or callback parameter.
 
 | Field | Offset from TCD47 | Relevant value |
-|---|---:|---|
+| --- | ---: | --- |
 | SADDR / DADDR | `0x00` / `0x10` | Actual source/destination addresses. |
 | ATTR | `0x04` | `0x0404`: 16-byte source/destination sizes, no modulo. |
 | SOFF / NBYTES / DOFF | `0x06` / `0x08` / `0x16` | `16 / 16 / 16`. |
 | CITER / BITER | `0x14` / `0x1C` | Linked count/control, not an ordinary 16-bit length. |
-| CSR | `0x1E` | Software completion checks include bit7. |
+| CSR | `0x1E` | Software completion checks include bit 7. |
 
 `0xDE1B`: ELINK=1, LINKCH=47, low-nine-bit count 27 → **0x1B0 bytes**.
 `0xDE40`: ELINK=1, LINKCH=47, count 64 → **0x400 bytes**.
-The Section7 reverse transfer reads exactly `[0x80003840,0x80003C40)` and targets
+The Section 7 reverse transfer reads exactly `[0x80003840,0x80003C40)` and targets
 `[S+0x1B0,S+0x5B0)` for the recovered freshly programmed descriptor. It does **not**
 read a 0xDE400-byte region or thereby prove T-selector overlap. S's runtime owner
 remains unresolved locally; this parked boundary must not be joined by assumption.
@@ -240,7 +240,7 @@ remains unresolved locally; this parked boundary must not be joined by assumptio
 ## 6. Selector observation, mapping and dispatch
 
 Stock selector normalization is signed: negative → 0; 0–45 retained; positive >45
-clamped to45. The original 46-byte map has the following logical values:
+clamped to 45. The original 46-byte map has the following logical values:
 
 ```text
 0..7 -> same-numbered family
@@ -248,12 +248,12 @@ clamped to45. The original 46-byte map has the following logical values:
 all other entries, including 45 -> 0
 ```
 
-The candidate retains families for all non45 raw-byte inputs and maps **only exact
-raw 45 → e12**. Its invalid-byte decode uses a family 0 fallback entry, not entry45
+The candidate retains families for all non-45 raw-byte inputs and maps **only exact
+raw 45 → e12**. Its invalid-byte decode uses a family 0 fallback entry, not entry 45
 of the new packed map. Closed-gate cached-family behavior is a separate condition.
 
 | Object | Stock 1.41 | Frozen candidate |
-|---|---|---|
+| --- | --- | --- |
 | B/render table | `0x400148F0`, 12 LONG pointers | Same base, 13 pointers, ends `0x40014924`. |
 | A/prep table | `0x40014920`, 12 LONG pointers | `0x40014924`, 13 pointers, ends `0x40014958`. |
 | Raw selector map | `0x40014950`, 46 BYTEs | `0x40014958`, 23 packed BYTEs, ends `0x4001496F`. |
@@ -277,9 +277,9 @@ path, not bitwise identity of every register.
 
 The original dispatcher tests the **previous LONG `Dslot[t]+0x38`**. Incoming header
 state becomes the next gate; writing a selector BYTE alone does not guarantee immediate
-observation. The candidate's exact45 bypass in `[0x400043EE,0x4000442A)` observes raw 45
+observation. The candidate's exact-45 bypass in `[0x400043EE,0x4000442A)` observes raw 45
 even with a closed old gate, then retains the family-cache equality check. It does not
-force a family reset on every block when the cache is already12.
+force a family reset on every block when the cache is already 12.
 [Gate proof](docs/SOURCE_CATALOG.md#source-951f30f7cec5647d).
 
 **Transition qualification:** leaving raw 45 follows the ordinary selector/gate path.
@@ -290,18 +290,18 @@ processing must be tested; the current patch is not a complete transition API.
 
 ## 7. Eight native knobs: exact reusable interface
 
-Machine45 borrows **Machine0 / BD MODERN** metadata, not SY TONE metadata. The eight
+Machine45 borrows **Machine 0 / BD MODERN** metadata, not SY TONE metadata. The eight
 UI descriptor identities and typed storage alias were proved independently. The
 descriptor getter at `0x400A5C4A` resolves the slot; the accepted WORD write at
 `0x40013378` is `P + 0x14 + 2*slot`. None of those storage decisions substitutes
 raw ID 0 for raw ID 45.
 
 All fields below are big-endian WORDs. `C+` means compact record offset; `T+` is
-the same-slot Section7 record. Roles name the nearest **existing donor** consumer,
+the same-slot Section 7 record. Roles name the nearest **existing donor** consumer,
 not a required semantics for a future third-party DSP module.
 
 | Knob / UI name | Descriptor | Slot | P+ | C+ | T+ | Default; encoded raw range | Donor role / nearest consumer |
-|---|---:|---:|---|---|---|---|---|
+| --- | ---: | ---: | --- | --- | --- | --- | --- |
 | 1 Tune / TUNE | 158 | 18 | `0x38` | `0x02` | `0x40` | `0x4000`; `0x2800..0x5800` | PITCH, `0x40002596`, phase increment. |
 | 2 Pitch Sweep / SWEP | 161 | 21 | `0x3E` | `0x08` | `0x46` | `0x1000`; `0..0x7F00` | PITCH, coefficient `Dslot+0x3F8` → `0x4000262C`. |
 | 3 Punch / PNCH | 163 | 23 | `0x42` | `0x0C` | `0x4A` | `0`; `0..0x0100` | CONTROL, reset/setup WORD test `0x40006AA8`, later `0x400047EA`. |
@@ -331,7 +331,7 @@ Important transport details:
 - MENV is inverted as `0x7F00-v`, except for the retained K37/K44 cases. The override
   does not force K45. A stale K value can therefore affect exceptional processing.
 - Compact `+0x0E` is a separate control WORD, **not an unused ninth knob slot**.
-- Rewriting global descriptor names/formatters would change Machine0 too. Machine45
+- Rewriting global descriptor names/formatters would change Machine 0 too. Machine45
   needs conditional presentation or separately allocated metadata, composed with
   other mods' SourcePageView hooks.
 
@@ -352,14 +352,14 @@ accepted current-Kit-v11 converter 0x400A7630
   -> 0x400A7046 writes live P[t]+0xA2
 ```
 
-For accepted source marker7, the frozen bound at `0x400A7018` is47. With
-`u=(raw+1)&255`, it retains raw 0–45 and255, and maps46–254 to0. The stock bound 46
-maps raw 45 to0. `0x400A703A` is **MVZ.B**, not the earlier incorrectly transcribed
-MVS.B. The one-byte format itself can represent45 without widening.
+For accepted source marker 7, the frozen bound at `0x400A7018` is 47. With
+`u=(raw+1)&255`, it retains raw 0–45 and 255, and maps 46–254 to 0. The stock bound 46
+maps raw 45 to 0. `0x400A703A` is **MVZ.B**, not the earlier incorrectly transcribed
+MVS.B. The one-byte format itself can represent 45 without widening.
 
 Current-Kit ownership is concrete: `P[t]=H[current_k]+0x2A+0x123*t`, while stored
 Sound children use `Sk+0x2E+0x107*t`. The accepted per-track converter preserves the
-Machine BYTE on that route. Kit version11 is **not** Pattern version11.
+Machine BYTE on that route. Kit version 11 is **not** Pattern version 11.
 [Sound source](docs/SOURCE_CATALOG.md#source-423aa4fff8ae4525),
 [live destination](docs/SOURCE_CATALOG.md#source-fa5b68500f57cbbd),
 [save symmetry](docs/SOURCE_CATALOG.md#source-f4b01430c5087c91).
@@ -380,7 +380,7 @@ An accepted alternate service row can feed K without proving a live P Machine wr
 [selector versus application](docs/SOURCE_CATALOG.md#source-1d3c8285ff4c76e2).
 
 | Lifecycle property | Local status |
-|---|---|
+| --- | --- |
 | Accepted Sound-v7 current-Kit Machine-BYTE save/load | **Confirmed by static analysis; READY in that scope.** |
 | Standalone Sound-pool → active track | **Hypothesis / Not yet verified; PARKED.** |
 | Pattern Machine identity save/restore | **Hypothesis / Not yet verified; static analysis exhausted.** |
@@ -391,8 +391,8 @@ An accepted alternate service row can feed K without proving a live P Machine wr
 
 V2's dedicated test core is selected by full `LONG(Dslot+0)==12` in the existing
 `0x4000290E` render helper. Its e12 span is `[0x4000297C,0x400029D8)`; the branchless
-fold is `[0x40002994,0x400029B2)`. The helper remains340 bytes. The fold implements
-`x<0 ? ~x : x`, **not ABS**. It changes23 byte positions versus the Candidate B
+fold is `[0x40002994,0x400029B2)`. The helper remains 340 bytes. The fold implements
+`x<0 ? ~x : x`, **not ABS**. It changes 23 byte positions versus the Candidate B
 parent within a 30-byte allocation. The older fixed-shift/TUNE attenuation experiment
 at `0x400046F0` is not the current V2 waveform-control design.
 [Composition](docs/SOURCE_CATALOG.md#source-e5fd0f09642ba705),
@@ -400,29 +400,29 @@ at `0x400046F0` is not the current V2 waveform-control design.
 
 This audit rechecked canonical hashes, all recorded MAIN allocations, packed map and
 A/B data, 256 selector-byte family outcomes, bounded disassembly, **4,096 encoded-core
-cases**, **312 whole-helper cases** across 8 slots×3 lanes×13 family tags, and **six
+cases**, **312 whole-helper cases** across 8 slots × 3 lanes × 13 family tags, and **six
 existing host reference tests**. These are **bounded host checks**, not whole-device
-emulation. The archived 100,663,296 phase comparisons,1,000,000 randomized states and
+emulation. The archived 100,663,296 phase comparisons, 1,000,000 randomized states and
 1,152,000 raw/PCM fixture comparisons were located and inspected, **not all rerun**.
 No WAV or firmware was generated.
 
-Container/packet checks and in-memory re-extraction passed:44,108 packet checksums,
-ELE3 checksum, four compressed-section sums; MAIN/Section7 equal supplied frozen
+Container/packet checks and in-memory re-extraction passed: 44,108 packet checksums,
+ELE3 checksum, four compressed-section sums; MAIN/Section 7 equal supplied frozen
 copies; the other six sections match originals in stored and decoded form. The
-pinned SyntHack 1.41 boot-margin **software model** gives99,938 bytes for stock and
+pinned SyntHack 1.41 boot-margin **software model** gives 99,938 bytes for stock and
 2,096,137 for this literal-packed candidate. That is not device authentication,
 flash-capacity, boot-success or hardware timing proof.
 
 ### Installation-independent module API
 
-[Public API](include/machine45_dsp_api.h),
-[SDK architecture](docs/DSP_ABI.md),
-[module author guide](docs/DSP_ABI.md):
+See the [public API](include/machine45_dsp_api.h) and
+[DSP ABI summary](docs/DSP_ABI.md). The private SDK architecture and module-author
+guide are not included in full.
 
 - Eight received raw `uint16_t` parameters, signed `int32_t` **local generation output**,
   optional context, init and explicitly optional reset.
-- Up to72 private state bytes per selected slot. The qualified loan is
-  `[Dslot+0x6B0,Dslot+0x6F8)`, only while the **actual family is12**. Family11 uses
+- Up to 72 private state bytes per selected slot. The qualified loan is
+  `[Dslot+0x6B0,Dslot+0x6F8)`, only while the **actual family is 12**. Family 11 uses
   those bytes otherwise. This is not globally free RAM and is not Sound persistence.
 - Candidate B and a 12-byte stateful fixture use the same source-level interface.
   The SDK does not specify a native ColdFire calling convention, install address,
@@ -433,39 +433,40 @@ flash-capacity, boot-success or hardware timing proof.
 
 ### Budgets
 
-Section7 existing geometry is Dslot8×`0x708`=14,400 bytes, B8×128=1,024 bytes,
-T8×`0x8E`=1,136 bytes. Packed-map savings fund the additional8 pointer bytes without
-growing Section7 or moving the following lookup. The72-byte state loan is existing
-storage, up to576 bytes across 8 slots, not a new allocation.
+The existing Section 7 geometry is Dslot 8 × `0x708` = 14,400 bytes,
+B 8 × 128 = 1,024 bytes, and T 8 × `0x8E` = 1,136 bytes.
+Packed-map savings fund the additional 8 pointer bytes without
+growing Section 7 or moving the following lookup. The 72-byte state loan is existing
+storage, up to 576 bytes across 8 slots, not a new allocation.
 
-Per recovered complete helper, branchless e12 executes912 instructions versus911
-for the retained donor path, with 226/83 LONG reads/writes versus289/83. That is not a
+Per recovered complete helper, branchless e12 executes 912 instructions versus 911
+for the retained donor path, with 226/83 LONG reads/writes versus 289/83. That is not a
 whole-engine or worst-case interrupt-cycle measurement. MAIN adds recurring per-track
 checks. Local **absolute static deadline remains BLOCKED**, relative render cost
 **COMPARABLE_BUT_UNPROVEN**, and hardware performance **UNTESTED**. RAMBAR/mapping/
-memory-service state prevents a justified absolute bound; do not repeat static
-timing archaeology. [Performance closure](docs/SOURCE_CATALOG.md#source-4285232af0501373).
+memory-service state prevents a justified absolute bound.
+[Performance closure](docs/SOURCE_CATALOG.md#source-4285232af0501373).
 
 ## 10. Comparison with current public community work
 
 ### Pinned sources, not a moving-branch assumption
 
 | Repository snapshot | Commit inspected | Qualification |
-|---|---|---|
-| SyntHack `main` / v0.9.0 | `c12cf23ad88e68d3f85422a7d09c2a911659997f` | Released1.41 framework snapshot. |
+| --- | --- | --- |
+| SyntHack `main` / v0.9.0 | `c12cf23ad88e68d3f85422a7d09c2a911659997f` | Released 1.41 framework snapshot. |
 | SyntHack `dev` | `76dfe08ba1b2d964495657f4fda775b328342d70` | Contributions/resources/build-policy snapshot, 2026-10-27. |
-| SY FM4 `main` | `a596b6393fc43582fd3ae0234ac04e198b779edb` | Published implementation targets **1.40A**, replacing/upgrading Machine4. |
+| SY FM4 `main` | `a596b6393fc43582fd3ae0234ac04e198b779edb` | Published implementation targets **1.40A**, replacing/upgrading Machine 4. |
 
-The latest [issue1 maintainer comment](https://github.com/Angelo-politek/Synthack-OS/issues/1#issuecomment-6453153344)
+The [maintainer comment on issue 1](https://github.com/Angelo-politek/Synthack-OS/issues/1#issuecomment-6453153344)
 asks for contributions against `dev`, registry claims, shared `modarea7` first, and
-eventual1.42 targeting. No `modarea7` or merged `sy-fm4` mod exists in either inspected
-upstream tree. Later issue comments report a separate1.41 port working on hardware;
+eventual 1.42 targeting. No `modarea7` or merged `sy-fm4` mod exists in either inspected
+upstream tree. Later issue comments report a separate 1.41 port working on hardware;
 that is **third-party reported hardware verification**, not local Machine45 evidence.
 [1.41 port report](https://github.com/Angelo-politek/Synthack-OS/issues/1#issuecomment-6245154375).
 
 ### Slot replacement versus registration
 
-FM4 keeps **public Machine4 / engine 4**. ALGO 0 delegates to stock SY TONE; other
+FM4 keeps **public Machine 4 / engine 4**. ALGO 0 delegates to stock SY TONE; other
 algorithms extend that same identity and add a second SYN page. Its native
 integration, parameter-lock and serialization techniques are useful, but it does
 not establish a 46th public Machine or Pattern persistence for raw 45.
@@ -475,21 +476,21 @@ not establish a 46th public Machine or Pattern persistence for raw 45.
 ### Reuse what is already available
 
 | Community facility | Reuse / boundary |
-|---|---|
-| MAIN `modarea` |64KiB heap-owned reservation, boot loader and tests. Reuse for small MAIN lookup/serializer hooks instead of cave hunting. Its success does not reserve memory on CPU 2. |
-| Builder |Per-range expected hashes, overlap rejection, dependency resolution and boot-margin checks. Use these instead of distributing a patched image. |
-| Registry |Coordinate mod-area offsets, descriptor IDs, pages, vparams and saved storage before implementing a mod. |
-| Native descriptors/editing |Reuse native sound-model descriptors for held-trig/p-lock behavior. Initial donor45 needs no new descriptor IDs. `vparams` routes kit parameters and is not a substitute for native per-Sound lock storage. |
-| CPU 2 loader / `modarea7` |FM4 supplies a 1.40A boot-copy example; shared safe installation is **not qualified in the inspected upstream dev**. Do not repeat the old raw-RAM assumption. |
-| Emulation/serialization tests |Use existing Unicorn/EMAC framework and FM4/digiemu experience to close real lifecycle edges. Published coverage does not transfer automatically to ID 45. |
+| --- | --- |
+| MAIN `modarea` | 64 KiB heap-owned reservation, boot loader and tests. Reuse for small MAIN lookup/serializer hooks instead of cave hunting. Its success does not reserve memory on CPU 2. |
+| Builder | Per-range expected hashes, overlap rejection, dependency resolution and boot-margin checks. Use these instead of distributing a patched image. |
+| Registry | Coordinate mod-area offsets, descriptor IDs, pages, vparams and saved storage before implementing a mod. |
+| Native descriptors/editing | Reuse native sound-model descriptors for held-trig/p-lock behavior. Initial donor 45 needs no new descriptor IDs. `vparams` routes kit parameters and is not a substitute for native per-Sound lock storage. |
+| CPU 2 loader / `modarea7` | FM4 supplies a 1.40A boot-copy example; shared safe installation is **not qualified in the inspected upstream dev**. Do not repeat the old raw-RAM assumption. |
+| Emulation/serialization tests | Use existing Unicorn/EMAC framework and FM4/digiemu experience to close real lifecycle edges. Published coverage does not transfer automatically to ID 45. |
 
 Sources: [modarea ownership](https://github.com/Angelo-politek/Synthack-OS/blob/c12cf23ad88e68d3f85422a7d09c2a911659997f/mods/modarea/README.md),
 [current registry](https://github.com/Angelo-politek/Synthack-OS/blob/76dfe08ba1b2d964495657f4fda775b328342d70/docs/registry.md),
 [builder](https://github.com/Angelo-politek/Synthack-OS/blob/76dfe08ba1b2d964495657f4fda775b328342d70/tools/build/build.py),
 [native editing guidance](https://github.com/Angelo-politek/Synthack-OS/issues/1#issuecomment-6225930131).
 
-Current dev permits in-place patches to sections3 and7 but **appends only to3**
-(`APPENDABLE={3}`). Earlier comments saying Section7 append was accepted are
+The inspected dev snapshot permits in-place patches to sections 3 and 7 but **appends only to 3**
+(`APPENDABLE={3}`). Earlier comments saying Section 7 append was accepted are
 superseded by this source and the latest maintainer comment. FM4's published loader
 uses `0x47000000`; later authors warn about sample-page overwrites. That address is
 **not an adopted safe installation address**. A working specific build report does
@@ -497,16 +498,16 @@ not replace a general ownership/lifetime certificate.
 
 ### Version crosswalk — selected examples only
 
-| Item | FM4 published 1.40A | Locally verified1.41 |
-|---|---|---|
+| Item | FM4 published 1.40A | Locally verified 1.41 |
+| --- | --- | --- |
 | MAIN descriptor base | `0x40219A9C` | `0x4022D59C` |
 | SourcePageView knob override | `0x40043F9C` | `0x40044C54` |
 | MAIN render DMA waiter | `0x400A10DA` | `0x400A2036` |
-| Section7 stock tables | `0x400148F0 / 0x40014920 / 0x40014950` | Same quoted stock addresses, independently read locally. |
-| Section7 patched A/map bases | Not the packed e12 layout | `0x40014924 / 0x40014958`. |
-| Claimed section-size cap | `0x60000-5`, FM4's1.40A check | **Not adopted as a qualified1.41 loader bound.** |
+| Section 7 stock tables | `0x400148F0 / 0x40014920 / 0x40014950` | Same quoted stock addresses, independently read locally. |
+| Section 7 patched A/map bases | Not the packed e12 layout | `0x40014924 / 0x40014958`. |
+| Claimed section-size cap | `0x60000-5`, FM4's 1.40A check | **Not adopted as a qualified 1.41 loader bound.** |
 
-The local 1.41 boot-call range matches FM4's quoted1.40A expected hash, and Section7
+The local 1.41 boot-call range matches FM4's quoted 1.40A expected hash, and Section 7
 length matches its declared image end. Those two checks do not qualify all addresses
 or either loader. The standalone FM4 `--hijack` table writes also omit per-entry
 `expect` hashes in their `put()` calls; use the community builder's stronger site
@@ -519,9 +520,9 @@ checks when porting. [Published patcher](https://github.com/Rxuting/sy-fm4/blob/
    entry. Generate a shared table/layout or initially avoid table expansion.
 2. **Native metadata:** verify or regenerate a static normalizer from the combined
    descriptor catalog rather than assuming any stock snapshot is universal. FM4's
-   excluded-owner page2 records alone need not change those rows. Do not globally
-   rename shared Machine0 descriptors.
-3. **Resources:** FX3 uses246–253 and269; master-comp262–268. IDs 254–261 are unclaimed
+   excluded-owner page 2 records alone need not change those rows. Do not globally
+   rename shared Machine 0 descriptors.
+3. **Resources:** FX3 uses 246–253 and 269; master-comp 262–268. IDs 254–261 are unclaimed
    in the inspected registry but have MIDI CCs and are discussed for FM4. IDs 505+
    have no native descriptor/object allocation. Do not claim an ID from a stale list.
 4. **Hooks:** compose SourcePageView/edit/serialization hooks through a common
@@ -529,7 +530,7 @@ checks when porting. [Published patcher](https://github.com/Rxuting/sy-fm4/blob/
 5. **Budget:** community CPU 1 interrupt-load tests include FX3, master-comp and
    dual-mono; CPU 2 FM4 reports are separate. Their instruction/cycle estimates are
    not additive hardware deadline proof for Machine45.
-6. **Transitions/storage:** test45 alongside4/FM4, stock0 and44, Sound locks,
+6. **Transitions/storage:** test 45 alongside 4/FM4, stock 0 and 44, Sound locks,
    p-lock restore, Kit/project changes and Pattern reload. Preserve original invalid
    IDs/sentinels and isolate all 8 tracks.
 
@@ -540,53 +541,54 @@ References: [registry source](https://github.com/Angelo-politek/Synthack-OS/blob
 ## 11. Corrections and rejected bridges
 
 | Earlier interpretation | Audited replacement |
-|---|---|
+| --- | --- |
 | `0x400144F0` is a renderer table | Rejected. Qualified stock B/A/map bases are `0x400148F0/14920/14950`. |
 | Machine ID in MIDI NRPN/CC/UART proves internal renderer transport | It does not; that path is protocol traffic. |
-| Opcode0x30/subtype4 enqueues internal service N | Recovered endpoint is host-bound USB0x82, not a proven internal queue. |
-| MAIN0x8E copier means MAIN track t = DSP row t | That proposed namespace gives `j=t+2`; use the 20-byte ordinal-preserving compact path. |
-| `DE40*16` or `DE1B*16` gives a huge transfer | Linked count fields give0x400 and0x1B0 bytes respectively. |
-| Parameter#23 / matching `+0x3E` proves selector ancestry | Offset/index coincidence is insufficient. Current actual selector source/override and generic parameter slots are separate. |
+| Opcode 0x30/subtype 4 enqueues internal service N | Recovered endpoint is host-bound USB 0x82, not a proven internal queue. |
+| MAIN 0x8E copier means MAIN track t = DSP row t | That proposed namespace gives `j=t+2`; use the 20-byte ordinal-preserving compact path. |
+| `DE40*16` or `DE1B*16` gives a huge transfer | Linked count fields give 0x400 and 0x1B0 bytes respectively. |
+| Parameter #23 / matching `+0x3E` proves selector ancestry | Offset/index coincidence is insufficient. Current actual selector source/override and generic parameter slots are separate. |
 | Sound-v7 converter ancestry remains entirely unknown | The current-Kit Sound route is now concretely closed; standalone application is not. |
 | Pattern-v11 row+AC is the Sound Machine byte | Concrete destination is Pattern row+2EC, not live P+A2. |
 | MAIN page-accessor X remains a blocker | Later concrete caller-domain proof resolves it safely in that scope. |
-| Empty RAM or appended Section7 data is persistent executable storage | Not qualified; templates are cleared/reused and runtime/peer writes remain possible. |
+| Empty RAM or appended Section 7 data is persistent executable storage | Not qualified; templates are cleared/reused and runtime/peer writes remain possible. |
 | Host WAVs / modeled opcodes prove device sound and deadline | They do not. No local hardware run or whole-device Machine45 emulation exists. |
 
-The [evidence index](EVIDENCE_INDEX.md)
-identifies the superseding reports and the private historical material.
+The [evidence index](EVIDENCE_INDEX.md) identifies the superseding reports and the
+private historical material.
 
 ## 12. Recommended community implementation sequence
 
 This is a proposal for maintainers to adapt, not work performed in this audit.
 
-1. **Agree an additive identity contract.** Reserve public45 separately from engine
+1. **Agree an additive identity contract.** Reserve public ID 45 separately from engine
    and descriptor IDs; pin the OS/commit. Keep the V2 artifacts frozen/private.
-2. **Prove a donor-only Machine first.** Public45 can initially publish selector 45
+2. **Prove a donor-only Machine first.** Public ID 45 can initially publish selector 45
    and reuse existing family 0; stock selector 45 already maps there. A new family 12
    is **not required just to prove independent public identity**. This avoids the
    packed-map/A-table conflict for the first lifecycle experiment. It does not by
    itself solve selector refresh, transitions or persistence.
-3. **Use owned MAIN modarea code for exact45 metadata aliases and publication.**
+3. **Use owned MAIN modarea code for exact-45 metadata aliases and publication.**
    Preserve raw 45 in P and storage. Prefer narrow lookup-ID aliasing over replacing
    all stock tables with frozen snapshots; qualify register/CCR behavior at each hook.
 4. **Close lifecycle in the existing emulator framework.** Exercise menu selection,
-   enter/leave45, all 8 tracks, ordinary knobs, held trigs, p-locks, Sound locks,
+   enter/leave 45, all 8 tracks, ordinary knobs, held trigs, p-locks, Sound locks,
    current Kit, standalone Sound and Pattern/project save/reload through actual
    firmware serializers and consumers. A selector update alone is not success.
 5. **Coordinate a shared engine registry if separate implementation slots are needed.**
    Reuse the e12 layout proof or relocate shared tables through a qualified backend;
-   compose FM4 engine 4 and stock0–11 rather than applying competing raw pointer edits.
+   compose FM4 engine 4 and stock 0–11 rather than applying competing raw pointer edits.
 6. **Qualify shared CPU 2 installation independently.** Reuse/review FM4's loader work,
    but establish owned executable storage, size bounds, copy-before-clear lifetime,
-   entry binding and cache/ABI preservation. No new cave or RAM hunt is requested.
+   entry binding and cache/ABI preservation. The current handoff does not establish
+   a safe executable region.
 7. **Bind the generic SDK only after that backend exists.** Initial borrowed knobs
    need no new UI system or transport. Candidate B remains an optional regression
    module, not a requested sound design or required renderer.
 
 The genuine blockers are **full lifecycle/transition proof**, **composable versioned
 registration**, and, for arbitrary new native DSP, **qualified CPU 2 installation**.
-Checksum recomputation and representing45 in a BYTE are not the outstanding problems.
+Checksum recomputation and representing 45 in a BYTE are not the outstanding problems.
 
 ## 13. Public reproduction and distribution boundary
 
@@ -600,7 +602,7 @@ A small independent read-only tool can recheck stock 1.41 metadata without any
 private candidate or proprietary bytes embedded in the script:
 
 ```sh
-python3 tools/check_stock_metadata.py --main /private/main.bin --section7 /private/section7.bin
+python3 tools/check_stock_metadata.py --main path/to/main.bin --section7 path/to/section7.bin
 ```
 
 The arguments are privately extracted stock sections. The tool verifies their

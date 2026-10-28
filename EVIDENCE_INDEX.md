@@ -19,6 +19,11 @@ Included public files have ordinary relative links; excluded sources link to
 [the private-source catalog](docs/SOURCE_CATALOG.md). No original report is
 represented as publicly available merely because it is cited.
 
+Links to the validation, upstream-source, baseline and DSP API summaries provide
+abridged public information, not the complete private reports named in the tables.
+Only the stock metadata checker is runnable from this repository. The private
+candidate and its complete tests cannot be reproduced from the public files alone.
+
 Evidence levels:
 
 - **STATIC:** Confirmed by static analysis in the cited local scope; important
@@ -40,18 +45,19 @@ re-proved**. Their original classifications are not automatically adopted.
 ## 2. Audit records, inventory and missing history
 
 | Record | Scope / result |
-|---|---|
-| [workspace_inventory.json](docs/SOURCE_CATALOG.md#source-4c874506ec33308f) | Complete1754-file research/source/output census, sizes, SHA-256 and publication-review categories. Dependency/toolchain/cache exclusions are explicit. |
-| [before.json](docs/SOURCE_CATALOG.md#source-abec3e8cfe594b4c) |1280 existing files protected before this audit's document work. |
+| --- | --- |
+| [workspace_inventory.json](docs/SOURCE_CATALOG.md#source-4c874506ec33308f) | Complete 1754-file research/source/output census, sizes, SHA-256 and publication-review categories. Dependency/toolchain/cache exclusions are explicit. |
+| [before.json](docs/SOURCE_CATALOG.md#source-abec3e8cfe594b4c) | 1280 existing files protected before this audit's document work. |
 | [audit_readonly.py](docs/SOURCE_CATALOG.md#source-a2037240c843533a) | Read-only checker. Writes only fresh JSON in its audit directory. No firmware output. |
-| [audit_results_verified.json](metadata/VALIDATION_SUMMARY.json) | Current artifact hashes; in-memory re-extraction;847 MAIN changed bytes/12 allocations; map/layout; bounded decode;4096 core cases;312 helper cases;6 reference tests. |
+| [audit_results_verified.json](metadata/VALIDATION_SUMMARY.json) | Current artifact hashes; in-memory re-extraction; 847 MAIN changed bytes/12 allocations; map/layout; bounded decode; 4096 core cases; 312 helper cases; 6 reference tests. |
 | [audit_metadata_readonly.py](docs/SOURCE_CATALOG.md#source-b505979474dbf857) / [metadata_checks.json](metadata/VALIDATION_SUMMARY.json) | Independent reconstruction from 505 original descriptors/315 admitted records; all eight knob descriptors and exact setter/Sound byte instructions match. Runtime data lifetime is not thereby proven. |
-| [public_sources.json](metadata/UPSTREAM_SOURCES.json) | Repository commit pins, source-path mapping and11 issue comments with public URLs/dates. No external writes. |
+| [public_sources.json](metadata/UPSTREAM_SOURCES.json) | Repository commit pins, source-path mapping and 11 issue comments with public URLs/dates. No external writes. |
 | [delivery_checks.json](docs/SOURCE_CATALOG.md#source-0d468d3e12f11add) | Final document-link, preservation and completeness checks; created after the three documents. |
 
-`git rev-parse --show-toplevel` returned128: **not a Git repository**, including its
-parents. No nested `.git` was found inside the workspace. Private research Git commit history
-is **unavailable**, not reconstructed from report dates. Existing JSON manifests,
+During the private audit, `git rev-parse --show-toplevel` returned 128:
+the research workspace and its parents were **not a Git repository**. No nested
+`.git` was found. Its research commit history is **unavailable** and cannot be
+reconstructed from report dates. Existing JSON manifests,
 before/after ledgers, source scripts and saved logs are provenance substitutes only.
 
 `tools/tmp/machine45_v2_branchless_candidate_repack.log` is an existing offline build
@@ -62,14 +68,14 @@ successful Machine45 installation, audible output or p-lock/Pattern restoration.
 ## 3. Immutable private inputs and outputs
 
 | Local path | Role / publication |
-|---|---|
+| --- | --- |
 | [Syntakt_OS1.41.syx](docs/SOURCE_CATALOG.md#source-9d838be68403ba59) | Proprietary stock input. **DO NOT PUBLISH.** SHA `8e2488f462c4a5656396a895f113bcd415e9900fa8709340dccf45d4cb9ed19e`. |
 | [derived/manifest.json](docs/SOURCE_CATALOG.md#source-94ab0829b7f95fac) | Original eight-section offsets, modes, destinations, checksums and decoded hashes. Metadata, not authenticity proof. |
-| [derived/sections/section_3_MAIN_OS.bin](docs/SOURCE_CATALOG.md#source-9f9d6b270aab7fbe) | Original MAIN;3438480 B; SHA `8cf2b4b4ea80d58953da46ca453328454fb3fca5cb5f844a2f7bad4b72241f53`. **DO NOT PUBLISH.** |
-| [derived/sections/section_7_section_7.raw.bin](docs/SOURCE_CATALOG.md#source-5cb73c51cb2d6082) | Original Section7;383760 B; SHA `daf6451cf9587c0b628e901b7bb6b25f4e2633d448c534c0c181dd35ec783bc2`. **DO NOT PUBLISH.** |
-| [build/Machine45_FULL_STATIC_BRIDGE_MAIN_RESEARCH_ONLY.bin](docs/SOURCE_CATALOG.md#source-3af94442c970c624) | Frozen MAIN;3438480 B; SHA `de897a43ff8499781821480c7c249394beb1792ab2652d057795087dbaa6e83d`. **DO NOT PUBLISH/OVERWRITE.** |
-| [build/Section7_MACHINE45_V2_BRANCHLESS_RESEARCH_ONLY.bin](docs/SOURCE_CATALOG.md#source-8b4d6b5c6c2461a0) | Frozen Section7;383760 B; SHA `4d8bb919a2447edd67c8cd5b6b5607f1f2789dc0151169af29b959493e72f505`. **DO NOT PUBLISH/OVERWRITE.** |
-| [build/Syntakt_OS1.41_Machine45_V2_BRANCHLESS_RESEARCH_ONLY_DO_NOT_FLASH.syx](docs/SOURCE_CATALOG.md#source-5ee042d4de3fb124) | Frozen combined candidate;5645856 B; SHA `94c59d048057a58ec3cb85b16ec9912e1d86cecb49d5d62f23ddc955ec121d6c`. **DO NOT PUBLISH/OVERWRITE.** |
+| [derived/sections/section_3_MAIN_OS.bin](docs/SOURCE_CATALOG.md#source-9f9d6b270aab7fbe) | Original MAIN; 3438480 B; SHA `8cf2b4b4ea80d58953da46ca453328454fb3fca5cb5f844a2f7bad4b72241f53`. **DO NOT PUBLISH.** |
+| [derived/sections/section_7_section_7.raw.bin](docs/SOURCE_CATALOG.md#source-5cb73c51cb2d6082) | Original Section 7; 383760 B; SHA `daf6451cf9587c0b628e901b7bb6b25f4e2633d448c534c0c181dd35ec783bc2`. **DO NOT PUBLISH.** |
+| [build/Machine45_FULL_STATIC_BRIDGE_MAIN_RESEARCH_ONLY.bin](docs/SOURCE_CATALOG.md#source-3af94442c970c624) | Frozen MAIN; 3438480 B; SHA `de897a43ff8499781821480c7c249394beb1792ab2652d057795087dbaa6e83d`. **DO NOT PUBLISH/OVERWRITE.** |
+| [build/Section7_MACHINE45_V2_BRANCHLESS_RESEARCH_ONLY.bin](docs/SOURCE_CATALOG.md#source-8b4d6b5c6c2461a0) | Frozen Section 7; 383760 B; SHA `4d8bb919a2447edd67c8cd5b6b5607f1f2789dc0151169af29b959493e72f505`. **DO NOT PUBLISH/OVERWRITE.** |
+| [build/Syntakt_OS1.41_Machine45_V2_BRANCHLESS_RESEARCH_ONLY_DO_NOT_FLASH.syx](docs/SOURCE_CATALOG.md#source-5ee042d4de3fb124) | Frozen combined candidate; 5645856 B; SHA `94c59d048057a58ec3cb85b16ec9912e1d86cecb49d5d62f23ddc955ec121d6c`. **DO NOT PUBLISH/OVERWRITE.** |
 | [MACHINE45_V2_BRANCHLESS_RELEASE_STATE.md](docs/FROZEN_BASELINE.md) | Frozen milestone, source inventory, archived validation scopes and never-overwrite list. |
 | [build/MACHINE45_V2_BRANCHLESS_CANONICAL_HASHES.txt](docs/SOURCE_CATALOG.md#source-9030f3735a9acb62) | Canonical artifact names, sizes and hashes. Hashes can be shared; binaries cannot. |
 
@@ -85,49 +91,49 @@ Read their later closures, not only the initial plan.
 ### 4.1 Public registration, identity and metadata
 
 | Evidence | Key point / level |
-|---|---|
+| --- | --- |
 | [machine45_explicit_bridge_hook.txt](docs/SOURCE_CATALOG.md#source-5901bcebce88e14f) | STATIC: store `0x40025620`, changed-only boundary `0x40025628`, D2 raw ID/D4 track/R/P/stack/CCR. |
 | [machine45_three_aliases_exact.txt](docs/SOURCE_CATALOG.md#source-2d40e31af8757a6b) | STATIC local lookup identities; not a complete lifecycle proof. |
 | [machine45_data_alias_options.txt](docs/SOURCE_CATALOG.md#source-672241b3e9cd2f2c) | STATIC table extents/adjacency, descriptor matrix construction; relocation lifetime remains separately qualified. |
-| [machine45_research_candidate_diff.txt](docs/SOURCE_CATALOG.md#source-df754e105bce6cae) | Initial11 write allocations and686 actual changed positions. Contains byte arrays: review/redact before sharing. |
+| [machine45_research_candidate_diff.txt](docs/SOURCE_CATALOG.md#source-df754e105bce6cae) | Initial 11 write allocations and 686 actual changed positions. Contains byte arrays: review/redact before sharing. |
 | [machine45_research_candidate_data_layout.txt](docs/SOURCE_CATALOG.md#source-2de8b98f2a3d215e) | STATIC mask/matrix/display reconstruction; runtime mapping/lifetime OPEN. |
-| [machine45_full_main_binary_diff.txt](docs/SOURCE_CATALOG.md#source-b908db4076cd57fb) | Applied serializer plus retained edits; final MAIN847 changed positions rechecked. Private original/new byte dumps. |
-| [machine45_serializer_local_placement.txt](docs/SOURCE_CATALOG.md#source-7db526998bf24c82) | STATIC186-byte local design /166-byte applied rewrite, live same-track context. Historical UNAPPLIED notes superseded by applied candidate. |
+| [machine45_full_main_binary_diff.txt](docs/SOURCE_CATALOG.md#source-b908db4076cd57fb) | Applied serializer plus retained edits; final MAIN 847 changed positions rechecked. Private original/new byte dumps. |
+| [machine45_serializer_local_placement.txt](docs/SOURCE_CATALOG.md#source-7db526998bf24c82) | STATIC: 186-byte local design /166-byte applied rewrite, live same-track context. Historical UNAPPLIED notes superseded by applied candidate. |
 | [machine45_full_patched_static_chain.txt](docs/SOURCE_CATALOG.md#source-1922296192440afd) | Applied local MAIN→compact bridge; peer edge strongly supported. Earlier audio/parameter qualifications are historical. |
 | [page_accessor_x_observable_effect.txt](docs/SOURCE_CATALOG.md#source-179a3cba053fce99) | STATIC current recovered caller set: CCR.X RESOLVED_SAFE. |
 
 ### 4.2 Transport, exact selector field and rejected natural bridge
 
 | Evidence | Key point / level |
-|---|---|
-| [main_compact_prefix_layout.txt](docs/SOURCE_CATALOG.md#source-b449039aee2bdf58) | STATIC compact20-byte records and track namespace. |
-| [main_compact_prefix_to_section7_low_transfer.txt](docs/SOURCE_CATALOG.md#source-0b0339ab0d439ae7) | Corrected0x1B0 descriptor, paired handshake, all 8 ordinals; peer/coherency OPEN/strongly supported. |
-| [section7_low_prefix_to_T_map.txt](docs/SOURCE_CATALOG.md#source-8b4ed677309b774d) | STATIC low record byte0 → same-slot T+3E, callback00934/eight-copy loop00978. |
-| [machine45_dma47_exact_transfer_geometry.txt](docs/SOURCE_CATALOG.md#source-2c78089c07120384) | STATIC under matched eDMA map: TCD47, DE40 count 64,1024-byte reverse payload; authoritative over old huge counts. |
-| [section7_audio_block_size.txt](docs/SOURCE_CATALOG.md#source-7f85bd7aa45827a8) | Corrected32-LONG per-slot B row and eight-row arena. |
+| --- | --- |
+| [main_compact_prefix_layout.txt](docs/SOURCE_CATALOG.md#source-b449039aee2bdf58) | STATIC compact 20-byte records and track namespace. |
+| [main_compact_prefix_to_section7_low_transfer.txt](docs/SOURCE_CATALOG.md#source-0b0339ab0d439ae7) | Corrected 0x1B0 descriptor, paired handshake, all 8 ordinals; peer/coherency OPEN/strongly supported. |
+| [section7_low_prefix_to_T_map.txt](docs/SOURCE_CATALOG.md#source-8b4ed677309b774d) | STATIC low record byte 0 → same-slot T+3E, callback 00934/eight-copy loop 00978. |
+| [machine45_dma47_exact_transfer_geometry.txt](docs/SOURCE_CATALOG.md#source-2c78089c07120384) | STATIC under matched eDMA map: TCD47, DE40 count 64, 1024-byte reverse payload; authoritative over old huge counts. |
+| [section7_audio_block_size.txt](docs/SOURCE_CATALOG.md#source-7f85bd7aa45827a8) | Corrected 32-LONG per-slot B row and eight-row arena. |
 | [machine30_subtype4_receiver.txt](docs/SOURCE_CATALOG.md#source-618aca520a0685e2) | STATIC host-bound USB path; not an internal service-N enqueue edge. |
 | [machine_setter_to_K_exact_chain.txt](docs/SOURCE_CATALOG.md#source-2b155d847feed93a) | Conditional source/cache identity only; changed-setter→accepted row is not automatically closed. |
-| [main_track_to_coldfire_voice_map.txt](docs/SOURCE_CATALOG.md#source-e4ed2a8634e69ba8) | HISTORICAL0x8E-row candidate; later t+2 correction prevents using it as the compact ordinal proof. |
+| [main_track_to_coldfire_voice_map.txt](docs/SOURCE_CATALOG.md#source-e4ed2a8634e69ba8) | HISTORICAL: 0x8E-row candidate; later t+2 correction prevents using it as the compact ordinal proof. |
 | [fc045_register_abi_final.txt](docs/SOURCE_CATALOG.md#source-b5f82bd81e71239b) | HISTORICAL MMIO widths/ordering; old transfer-length conclusions superseded. |
-| [fc045_selector_transfer_extent.txt](docs/SOURCE_CATALOG.md#source-653457e243c848af) | HISTORICAL oversized0xDE400/0xDE1B0 extents: do not reuse. |
+| [fc045_selector_transfer_extent.txt](docs/SOURCE_CATALOG.md#source-653457e243c848af) | HISTORICAL oversized 0xDE400/0xDE1B0 extents: do not reuse. |
 
 ### 4.3 Mapping, independent family 12 and refresh
 
 | Evidence | Key point / level |
-|---|---|
+| --- | --- |
 | [section7_selector_map_reader_inventory.txt](docs/SOURCE_CATALOG.md#source-d801975501204ee1) | Recovered actual map readers, not cardinality-based guessing. |
-| [section7_selector_map_exact_values.txt](docs/SOURCE_CATALOG.md#source-1709f07db6fef53c) |46 exact logical values; raw 45's stock family 0 fallback. |
-| [section7_family12_compacted_local_layout.txt](docs/SOURCE_CATALOG.md#source-558170dc333683f4) | STATIC B13/A13/23-byte packed map; following128×4 table unmoved. |
-| [section7_packed_map_domain_equivalence.txt](docs/SOURCE_CATALOG.md#source-192057c476ebb703) | Signed256-byte family outcome model and nibble bounds. |
-| [section7_familychange_complete_boundary_qualification.txt](docs/SOURCE_CATALOG.md#source-18872fbc93e28209) | STATIC JSR4432→3EE0: differing registers dead/equivalent/intentional; D6 remains live-equivalent. |
-| [section7_selector45_gate_bypass_design.txt](docs/SOURCE_CATALOG.md#source-9be8721a7da61c4d) | Exact45 observation despite old closed gate; historical design bytes, applied later. |
-| [section7_selector45_gate_bypass_domain_safety.txt](docs/SOURCE_CATALOG.md#source-951f30f7cec5647d) | STATIC bounded gate/cache/CCR projections;532480 model cases, not device/emulator timing. |
-| [section7_address_normalization.txt](docs/SOURCE_CATALOG.md#source-a1ba1287be3d2fdc) | Correct VA basis and rejected0x400144F0 table hypothesis. |
+| [section7_selector_map_exact_values.txt](docs/SOURCE_CATALOG.md#source-1709f07db6fef53c) | 46 exact logical values; raw 45's stock family 0 fallback. |
+| [section7_family12_compacted_local_layout.txt](docs/SOURCE_CATALOG.md#source-558170dc333683f4) | STATIC B13/A13/23-byte packed map; following 128 × 4 table unmoved. |
+| [section7_packed_map_domain_equivalence.txt](docs/SOURCE_CATALOG.md#source-192057c476ebb703) | Signed 256-byte family outcome model and nibble bounds. |
+| [section7_familychange_complete_boundary_qualification.txt](docs/SOURCE_CATALOG.md#source-18872fbc93e28209) | STATIC JSR 4432→3EE0: differing registers dead/equivalent/intentional; D6 remains live-equivalent. |
+| [section7_selector45_gate_bypass_design.txt](docs/SOURCE_CATALOG.md#source-9be8721a7da61c4d) | Exact-45 observation despite old closed gate; historical design bytes, applied later. |
+| [section7_selector45_gate_bypass_domain_safety.txt](docs/SOURCE_CATALOG.md#source-951f30f7cec5647d) | STATIC bounded gate/cache/CCR projections; 532480 model cases, not device/emulator timing. |
+| [section7_address_normalization.txt](docs/SOURCE_CATALOG.md#source-a1ba1287be3d2fdc) | Correct VA basis and rejected 0x400144F0 table hypothesis. |
 
 ### 4.4 Eight controls and concrete consumers
 
 | Evidence | Key point / level |
-|---|---|
+| --- | --- |
 | [machine45_eight_knob_descriptor_map.txt](docs/SOURCE_CATALOG.md#source-cf0d151200b728bc) | STATIC native knob order, descriptors, slots, names/defaults/ranges. |
 | [machine45_eight_knob_main_fields.txt](docs/SOURCE_CATALOG.md#source-dbe61f775d248162) | STATIC descriptor+4 → WORD(P+14+2s), actual UI store and notification. |
 | [machine45_eight_knob_compact_map.txt](docs/SOURCE_CATALOG.md#source-efeebcf15ccc4ec9) | STATIC scalar mirror/smoothing/modulation/packing; MENV inversion and K exceptions. |
@@ -139,10 +145,10 @@ Read their later closures, not only the initial plan.
 ### 4.5 Persistence and source-identity corrections
 
 | Evidence | Key point / level |
-|---|---|
+| --- | --- |
 | [machine45_sound_v7_machine_byte_source.txt](docs/SOURCE_CATALOG.md#source-423aa4fff8ae4525) | STATIC concrete Sound callback → save converter; storage+AC; MVZ mnemonic correction. |
 | [machine45_sound_v7_to_runtime_machine.txt](docs/SOURCE_CATALOG.md#source-fa5b68500f57cbbd) | STATIC accepted current-Kit row→live P; standalone import destination is pool only. |
-| [machine45_sound_v7_raw45_behavior.txt](docs/SOURCE_CATALOG.md#source-e9e73a57d0addb98) | STATIC raw-byte sanitizer0..45/46..254/255 behavior. |
+| [machine45_sound_v7_raw45_behavior.txt](docs/SOURCE_CATALOG.md#source-e9e73a57d0addb98) | STATIC raw-byte sanitizer 0..45/46..254/255 behavior. |
 | [machine45_persistence_save_symmetry.txt](docs/SOURCE_CATALOG.md#source-f4b01430c5087c91) | STATIC save/load byte symmetry in the accepted current-Kit route. |
 | [machine45_persistence_converter_crosswalk.txt](docs/SOURCE_CATALOG.md#source-343520aa95582e56) | Concrete converter identities; avoids relying on old Track-only labels. |
 | [machine45_pattern_v11_machine_byte_source.txt](docs/SOURCE_CATALOG.md#source-aa3c8a4f3345b0f7) | OPEN actual persisted Machine source; disproves the guessed row+AC interpretation. |
@@ -153,12 +159,12 @@ Read their later closures, not only the initial plan.
 ### 4.6 Frozen V2, validation, integrity and performance
 
 | Evidence / saved result | Scope |
-|---|---|
+| --- | --- |
 | [machine45_v2_branchless_composition.txt](docs/SOURCE_CATALOG.md#source-e5fd0f09642ba705) | STATIC range hashes and inherited components; current waveform is a fixture only. |
-| [machine45_v2_branchless_binary_diff.txt](docs/SOURCE_CATALOG.md#source-3ac7e091d00ed145) |30-byte parent delta,23 changed positions; not a distributable full binary diff. |
-| [machine45_v2_branchless_candidate_disassembly.txt](docs/SOURCE_CATALOG.md#source-504649ecfff57cf0) | STATIC340-byte helper / boundaries. Contains original-code context: private/review before sharing. |
+| [machine45_v2_branchless_binary_diff.txt](docs/SOURCE_CATALOG.md#source-3ac7e091d00ed145) | 30-byte parent delta, 23 changed positions; not a distributable full binary diff. |
+| [machine45_v2_branchless_candidate_disassembly.txt](docs/SOURCE_CATALOG.md#source-504649ecfff57cf0) | STATIC: 340-byte helper / boundaries. Contains original-code context: private/review before sharing. |
 | [machine45_v2_branchless_candidate_equivalence.txt](docs/SOURCE_CATALOG.md#source-adcc7d51b963ef87) | HOST/algebraic results; no whole-device emulator. |
-| [machine45_v2_branchless_candidate_equivalence.json](docs/SOURCE_CATALOG.md#source-b8395f837c3722ae) | Archived100663296 phase comparisons,1000000 randomized states, full helper and PCM regressions. Located/inspected, not all rerun. |
+| [machine45_v2_branchless_candidate_equivalence.json](docs/SOURCE_CATALOG.md#source-b8395f837c3722ae) | Archived 100663296 phase comparisons, 1000000 randomized states, full helper and PCM regressions. Located/inspected, not all rerun. |
 | [machine45_v2_branchless_candidate_roundtrip.txt](docs/SOURCE_CATALOG.md#source-57dfc3cf9696493b) | Existing offline repack/re-extraction results; freshly rechecked in memory during audit. |
 | [machine45_v2_static_performance_closure.txt](docs/SOURCE_CATALOG.md#source-4285232af0501373) | STATIC analysis exhausted; absolute deadline blocked; relative cost comparable but unproven. |
 | [firmware_integrity_audit.txt](docs/SOURCE_CATALOG.md#source-ec8165c0a6045967) | Packet sum, ELE3 weighted sum, aPLib sum; no proven device authentication/rollback conclusion. |
@@ -167,22 +173,22 @@ Read their later closures, not only the initial plan.
 ### 4.7 SDK, installation backend and physical-access boundary
 
 | Evidence / source | Scope |
-|---|---|
+| --- | --- |
 | [MACHINE45_DSP_SDK_ARCHITECTURE.md](docs/DSP_ABI.md) | Public source ABI versus host adapter versus unavailable installer. |
-| [tools/machine45_dsp_api.h](include/machine45_dsp_api.h#L19) | Eight uint16 parameters,72-byte limit, signed local output; no firmware addresses. |
+| [tools/machine45_dsp_api.h](include/machine45_dsp_api.h#L19) | Eight uint16 parameters, 72-byte limit, signed local output; no firmware addresses. |
 | [MACHINE45_GENERIC_DSP_HOST_ABI.md](docs/DSP_ABI.md) | STATIC conditional `[Dslot+6B0,+6F8)` ownership loan while actual family 12 selected. Not executable storage or saved Sound state. |
 | [MACHINE45_DSP_MODULE_AUTHOR_GUIDE.md](docs/DSP_ABI.md) | Offline module workflow; not a firmware deployment guide. |
 | [MACHINE45_DSP_UI_PACKAGE_FORMAT.md](docs/DSP_ABI.md) | DSP/UI package format, symbolic binding and native-installation limitations. |
-| [SDK_RELEASE_STATE.json](docs/SOURCE_CATALOG.md#source-652eca852397afa9) | HOST17 DSP tests and40 UI/package extension tests retained; no native object qualified. |
+| [SDK_RELEASE_STATE.json](docs/SOURCE_CATALOG.md#source-652eca852397afa9) | HOST: 17 DSP tests and 40 UI/package extension tests retained; no native object qualified. |
 | [native_backend_contract.json](docs/SOURCE_CATALOG.md#source-6d4262dbb0735269) | Executable/code/process/init/relocation/cache/lifetime fields symbolic; device_runnable=false. |
 | [machine45_native_backend_static_exhaustion.txt](docs/SOURCE_CATALOG.md#source-db818f6876572af3) | Existing boot execution evidence does not establish a persistent generic runtime installer. |
 | [machine45_observer_transport_exhaustion.txt](docs/SOURCE_CATALOG.md#source-0ba305dc39c029f9) | Local observer transport not recovered; no device observation performed. |
-| [syntakt_section7_physical_assignment.txt](docs/SOURCE_CATALOG.md#source-2d809176ecbca4c3) | Physical U14/U1 identities; Section7 package/BDM ownership unresolved. Not a blocker requiring community users to probe hardware. |
+| [syntakt_section7_physical_assignment.txt](docs/SOURCE_CATALOG.md#source-2d809176ecbca4c3) | Physical U14/U1 identities; Section 7 package/BDM ownership unresolved. Not a blocker requiring community users to probe hardware. |
 
 ## 5. Important address cross-reference
 
 | Space / 1.41 address | Meaning | Current confidence |
-|---|---|---|
+| --- | --- | --- |
 | MAIN `0x40025594` / `0x40025620` / `0x40025628` | Setter entry / Machine BYTE write / changed-only hook | STATIC. |
 | MAIN `P+0xA2`, `LONG(R+0x10)` | Runtime raw Machine identity / payload pointer | STATIC. |
 | MAIN `0x444E13F4`, `G+0x1AC+0x3C0*t` | Root slot / current payload-pointer field | STATIC on recovered bound root. |
@@ -191,26 +197,26 @@ Read their later closures, not only the initial plan.
 | MAIN `0x40013378` | Accepted parameter WORD store `P+0x14+2*slot` | STATIC. |
 | MAIN `0x400A3052` | Scalar parameter update into same-track mirror | STATIC parameter route, not natural Machine→K closure. |
 | MAIN `0x80002F50+t` / `0x800030C0+4*t` | K selector cache / Q row-pointer cache | Source/cache identities STATIC; changed-Machine admission OPEN. |
-| MAIN `0x400A4C7A..0x400A4D20` | Applied compact serializer rewrite | STATIC;847 total MAIN changed positions elsewhere included. |
+| MAIN `0x400A4C7A..0x400A4D20` | Applied compact serializer rewrite | STATIC; 847 total MAIN changed positions elsewhere included. |
 | MAIN `0x80002000+0x14*t`, block size `0x1B0` | Compact build record / submission extent | STATIC. |
-| MAIN `0x10000000+d` ↔ Section7 low `d` | Peer exchange views | STRONGLY SUPPORTED, not observed coherency. |
+| MAIN `0x10000000+d` ↔ Section 7 low `d` | Peer exchange views | STRONGLY SUPPORTED, not observed coherency. |
 | Each core `0xFC0455E0` | eDMA TCD47 | STATIC under retained MCF5441x map. |
-| Section7 `0x40000934`, `0x40000978` | Input callback / eight compact-record copy loop | STATIC. |
-| Section7 `0x80003C40+0x8E*t`, `+0x3E` | T row / raw selector BYTE | STATIC. |
-| Section7 `0x80000000+0x708*t`, `+0x38` | Voice state / previous refresh gate | STATIC semantics; device activation untested. |
-| Section7 `0x40004324`, `0x40004432→0x40003EE0` | Family dispatcher / changed-family call | STATIC recovered path. |
-| Section7 stock `0x400148F0/0x40014920/0x40014950` | B / A / raw map | STATIC stock addresses. |
-| Section7 candidate `0x400148F0/0x40014924/0x40014958` | B13 / A13 / packed map | STATIC candidate layout; coordinate other engine mods. |
-| Section7 `0x40006968/0x40006C9E` | Donor0 prep/render, duplicated by e12 entries | STATIC function/ABI relationship. |
-| Section7 `0x4000290E`, e12 `0x4000297C..0x400029D8` | Retained helper / V2 fixture core | STATIC + bounded HOST execution. |
-| Section7 `0x80003840..0x80003C40` | Eight32-LONG B output rows | STATIC, not a physical DAC address. |
-| Section7 slot `0x4004F6E0`; value S | Global pointer slot, not the pointer value itself | Runtime S / destination ownership OPEN. |
+| Section 7 `0x40000934`, `0x40000978` | Input callback / eight compact-record copy loop | STATIC. |
+| Section 7 `0x80003C40+0x8E*t`, `+0x3E` | T row / raw selector BYTE | STATIC. |
+| Section 7 `0x80000000+0x708*t`, `+0x38` | Voice state / previous refresh gate | STATIC semantics; device activation untested. |
+| Section 7 `0x40004324`, `0x40004432→0x40003EE0` | Family dispatcher / changed-family call | STATIC recovered path. |
+| Section 7 stock `0x400148F0/0x40014920/0x40014950` | B / A / raw map | STATIC stock addresses. |
+| Section 7 candidate `0x400148F0/0x40014924/0x40014958` | B13 / A13 / packed map | STATIC candidate layout; coordinate other engine mods. |
+| Section 7 `0x40006968/0x40006C9E` | Donor0 prep/render, duplicated by e12 entries | STATIC function/ABI relationship. |
+| Section 7 `0x4000290E`, e12 `0x4000297C..0x400029D8` | Retained helper / V2 fixture core | STATIC + bounded HOST execution. |
+| Section 7 `0x80003840..0x80003C40` | Eight 32-LONG B output rows | STATIC, not a physical DAC address. |
+| Section 7 slot `0x4004F6E0`; value S | Global pointer slot, not the pointer value itself | Runtime S / destination ownership OPEN. |
 | MAIN `0x400A7366/0x400A73FC` | Sound-v7 save / Machine BYTE copy | STATIC current-Kit source identity. |
 | MAIN `0x400A6F7E/0x400A7018/0x400A7046` | Sound-v7 load / changed bound / Machine BYTE destination | STATIC accepted row. |
 | MAIN `0x400A7630` | Accepted current-Kit-v11 child converter | STATIC; not Pattern-v11. |
 | MAIN `0x400A8048/0x400A7B9E/0x400A7F0C` | Pattern-v11 load / rows / locks | STATIC local structures; live Machine restoration OPEN. |
 
-Do not transfer these addresses to1.40A/1.42 using one global delta. The source
+Do not transfer these addresses to 1.40A/1.42 using one global delta. The source
 crosswalk in the handoff compares selected independently identified functions only.
 
 ## 6. Existing scripts, tests and disassemblies
@@ -220,7 +226,7 @@ baseline. Several builders intentionally refuse to overwrite existing outputs.
 No builder/repacker was run during this audit.
 
 | Tool / saved listing | Use / caution |
-|---|---|
+| --- | --- |
 | [scripts/extract_elektron_fw.py](docs/SOURCE_CATALOG.md#source-824c42a3a075d2fc) | Read-only pure transport/depack functions reused in memory. CLI creates private extracted files; do not publish those outputs. |
 | [scripts/repack_elektron_fw_literal.py](docs/SOURCE_CATALOG.md#source-675b3c80958bc860) | Historical literal repacker; **not run**. Format validity ≠ authentication. |
 | [scripts/build_machine45_research_candidate.py](docs/SOURCE_CATALOG.md#source-3d62aac1957fe341) | Initial MAIN construction logic. Original-byte constants/assets need publication review. |
@@ -230,10 +236,10 @@ No builder/repacker was run during this audit.
 | [tools/validate_machine45_v2_branchless_candidate.py](docs/SOURCE_CATALOG.md#source-883c73137af3dd00) | Saved extensive host validation; main entry compiles/writes reports, so this audit reused only inspected pure interfaces. |
 | [tools/machine45_v2_encoded_cpu.py](docs/SOURCE_CATALOG.md#source-4f108329647d0f74) | Bounded ColdFire/CCR/EMAC host interpreter, explicit instruction coverage; no peripheral model. |
 | [tools/tests/test_machine45_v2_reference.py](docs/SOURCE_CATALOG.md#source-8a8aa956baf3d1ac) | Six portable arithmetic/reference tests rerun successfully; no WAV generation. |
-| [scripts/analyze_page_accessor_x_local.py](docs/SOURCE_CATALOG.md#source-684426534d66d2f4) | Concrete caller/X closure and saved256-byte-domain results; not a new patch. |
+| [scripts/analyze_page_accessor_x_local.py](docs/SOURCE_CATALOG.md#source-684426534d66d2f4) | Concrete caller/X closure and saved 256-byte-domain results; not a new patch. |
 | [tools/tmp/main_os_loadbase_40000400.disasm](docs/SOURCE_CATALOG.md#source-02eb786aa3f0eb2a) | Normalized MAIN full listing. Proprietary full disassembly: **DO NOT PUBLISH**. |
-| [tools/tmp/main_os_full.disasm](docs/SOURCE_CATALOG.md#source-27b087f62f8d1413) | Legacy MAIN VMA40000000 listing: add400 to labels. **DO NOT PUBLISH**. |
-| [derived/section7_full_disassembly.asm](docs/SOURCE_CATALOG.md#source-31f9d0d330eee91d) | Existing full Section7 listing; check decoder/address qualification before relying on old mnemonics. **DO NOT PUBLISH**. |
+| [tools/tmp/main_os_full.disasm](docs/SOURCE_CATALOG.md#source-27b087f62f8d1413) | Legacy MAIN VMA40000000 listing: add 400 to labels. **DO NOT PUBLISH**. |
+| [derived/section7_full_disassembly.asm](docs/SOURCE_CATALOG.md#source-31f9d0d330eee91d) | Existing full Section 7 listing; check decoder/address qualification before relying on old mnemonics. **DO NOT PUBLISH**. |
 | [tools/tmp/machine45_serializer_local_bounded.disasm](docs/SOURCE_CATALOG.md#source-a12a0bd8b325d03d) | Private bounded serializer source context. |
 | [tools/binutils-prefix/bin/m68k-elf-objdump](docs/SOURCE_CATALOG.md#source-d56ff65742388a5f) | Existing project-local validated decoder; no Capstone/global tool installed. |
 
@@ -243,32 +249,32 @@ does not override the byte checks or later corrected source identity.
 
 ## 7. Public community source snapshots
 
-The private audit cache contains29 public text/JSON source snapshots with their
+The private audit cache contains 29 public text/JSON source snapshots with their
 licenses. JSON responses were pretty-printed; cite the repository commit for the
 authoritative original formatting. No external project was built or executed.
 
 | Source | Exact snapshot / useful files | Status |
-|---|---|---|
-| [SyntHack main](https://github.com/Angelo-politek/Synthack-OS/tree/c12cf23ad88e68d3f85422a7d09c2a911659997f) | `c12cf23ad88e68d3f85422a7d09c2a911659997f`; LICENSE,LEGAL,modarea,audio-path | Published released source inspected. |
-| [SyntHack dev](https://github.com/Angelo-politek/Synthack-OS/tree/76dfe08ba1b2d964495657f4fda775b328342d70) | `76dfe08ba1b2d964495657f4fda775b328342d70`; registry,builder,bootcheck,ID audit,CPU budget,UI docs | Current contribution snapshot inspected. No upstream modarea7/sy-fm4 directory. |
-| [SY FM4](https://github.com/Rxuting/sy-fm4/tree/a596b6393fc43582fd3ae0234ac04e198b779edb) | `a596b6393fc43582fd3ae0234ac04e198b779edb`; README,DESIGN,main_fm4.c,fm4_syn.c,s7patch.py,s3patch.py,stub/linker | Published1.40A ID 4 extension, not additive ID 45. |
-| [Issue1](https://github.com/Angelo-politek/Synthack-OS/issues/1) | Body plus11 comments; exact public comment URLs/dates cached | Distinguish older reports from latest maintainer policy. |
+| --- | --- | --- |
+| [SyntHack main](https://github.com/Angelo-politek/Synthack-OS/tree/c12cf23ad88e68d3f85422a7d09c2a911659997f) | `c12cf23ad88e68d3f85422a7d09c2a911659997f`; LICENSE, LEGAL, modarea, audio-path | Published released source inspected. |
+| [SyntHack dev](https://github.com/Angelo-politek/Synthack-OS/tree/76dfe08ba1b2d964495657f4fda775b328342d70) | `76dfe08ba1b2d964495657f4fda775b328342d70`; registry, builder, bootcheck, ID audit, CPU budget, UI docs | Current contribution snapshot inspected. No upstream modarea7/sy-fm4 directory. |
+| [SY FM4](https://github.com/Rxuting/sy-fm4/tree/a596b6393fc43582fd3ae0234ac04e198b779edb) | `a596b6393fc43582fd3ae0234ac04e198b779edb`; README, DESIGN, main_fm4.c, fm4_syn.c, s7patch.py, s3patch.py, stub/linker | Published 1.40A ID 4 extension, not additive ID 45. |
+| [Issue1](https://github.com/Angelo-politek/Synthack-OS/issues/1) | Body plus 11 comments; exact public comment URLs/dates cached | Distinguish older reports from latest maintainer policy. |
 | [1.41 FM4 hardware report](https://github.com/Angelo-politek/Synthack-OS/issues/1#issuecomment-6245154375) | karigardarsson's report of sound/edit/p-lock/save/reload initial tests | **External author-reported HW**, not independently reproduced here. |
-| [Current loader/registry policy](https://github.com/Angelo-politek/Synthack-OS/issues/1#issuecomment-6453153344) | dev PRs,resource registry,modarea7 ownership/limit,1.42 direction | Current discussion; APPENDABLE={3} also checked in source. |
+| [Current loader/registry policy](https://github.com/Angelo-politek/Synthack-OS/issues/1#issuecomment-6453153344) | dev PRs, resource registry, modarea7 ownership/limit, 1.42 direction | Current discussion; APPENDABLE={3} also checked in source. |
 
 Particular comparison sources:
 [registry](https://github.com/Angelo-politek/Synthack-OS/blob/76dfe08ba1b2d964495657f4fda775b328342d70/tools/build/registry.py),
 [native edit discussion](https://github.com/Angelo-politek/Synthack-OS/issues/1#issuecomment-6225930131),
 [modarea reservation](https://github.com/Angelo-politek/Synthack-OS/blob/c12cf23ad88e68d3f85422a7d09c2a911659997f/mods/modarea/README.md),
 [1.40A FM4 patcher](https://github.com/Rxuting/sy-fm4/blob/a596b6393fc43582fd3ae0234ac04e198b779edb/patch/s7patch.py).
-No claim that the inspected1.40A patcher is already a qualified1.41 installer.
+The inspected 1.40A patcher has not been qualified here as a 1.41 installer.
 
 ## 8. Reproduction, publication and remaining questions
 
 ### Read-only public recheck
 
 ```sh
-python3 tools/check_stock_metadata.py --main /private/main.bin --section7 /private/section7.bin
+python3 tools/check_stock_metadata.py --main path/to/main.bin --section7 path/to/section7.bin
 ```
 
 Use your own extracted stock 1.41 sections; none are supplied. This checks selected
@@ -279,8 +285,8 @@ above are not included and should not be assumed runnable from this export.
 ### Publication classes
 
 | Material | Treatment |
-|---|---|
-| These three new Markdown documents | Published sanitized export. Addresses and hashes are analytical metadata, not firmware images. |
+| --- | --- |
+| The handoff, issue draft and evidence index | Published sanitized export. Addresses and hashes are analytical metadata, not firmware images. |
 | Independently authored patch logic/API/tests | Review authorship/license and remove copied firmware bytes/assets before sharing. The original private corpus had no project-wide license; included public materials are covered by the repository LICENSE. |
 | FM4/SyntHack source reused | MIT text inspected; retain notices. Their licenses do not grant Elektron firmware rights. |
 | `candidate_b/assets.h`, cached coefficient tables, font metrics and generated module packages | Firmware-derived/test assets: **not pre-cleared for publication**. Prefer extraction from the recipient's own stock image or omit. |
@@ -289,7 +295,7 @@ above are not included and should not be assumed runnable from this export.
 
 ### Open issues to hand to the community
 
-1. End-to-end independent-ID lifecycle in a real emulator: enter/leave45, all tracks,
+1. End-to-end independent-ID lifecycle in a real emulator: enter/leave 45, all tracks,
    held-trig edits, native p-locks, Sound-lock source precedence and stale K/gates.
 2. Actual Pattern Machine-BYTE restoration; standalone Sound-pool application.
 3. Versioned, composable metadata/engine registration alongside FM4/FX3 and shared
@@ -297,17 +303,16 @@ above are not included and should not be assumed runnable from this export.
 4. CPU 2 executable ownership/installation and module-entry lowering for arbitrary DSP.
 5. Hardware acceptance/audibility/performance; host instruction counts are not deadlines.
 
-No new Pattern/backend/static timing search is requested. Initial donor-only
-registration can be attempted independently of arbitrary native DSP installation.
+Initial donor-only registration can be attempted independently of arbitrary native
+DSP installation. The unresolved Pattern, backend and timing questions remain
+outside the scope of this handoff.
 
 ## 9. Complete local evidence-file census
 
-The following location census is generated from the checked803-file inventory.
+The following location census is generated from the checked 803-file inventory.
 It includes old disproven and superseded reports. **Only the selected source chains
 above carry the qualified current interpretation.** No listed file is automatically
 approved for public attachment, and no census entry is new emulator/hardware proof.
-
-<!-- COMPLETE_EVIDENCE_CENSUS_20261028 -->
 
 <details>
 <summary>Generic host, executable installation and memory ownership — 83 files</summary>
@@ -835,7 +840,7 @@ approved for public attachment, and no census entry is new emulator/hardware pro
 </details>
 
 <details>
-<summary>Section7 decoding, dispatch, state and processing — 211 files</summary>
+<summary>Section 7 decoding, dispatch, state and processing — 211 files</summary>
 
 - [coldfire_80008188_semantics.txt](docs/SOURCE_CATALOG.md#source-f3ced1f356bcb682)
 - [coldfire_decoder_validation.txt](docs/SOURCE_CATALOG.md#source-771e5c02627af05a)

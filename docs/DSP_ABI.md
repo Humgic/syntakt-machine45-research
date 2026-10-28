@@ -5,23 +5,23 @@ This is an independently authored **source contract**, not a native ColdFire cal
 binding, packed transport structure, installer or running device plugin host.
 
 | Concept | Contract |
-|---|---|
+| --- | --- |
 | Controls | Exactly eight received raw uint16_t values, in physical knob order |
 | Private state | Declared 0–72 bytes, at least four-byte alignment; optional/stateless is allowed |
 | Output | Signed int32_t local generation sample; not an assertion about final DAC PCM |
-| Process | Scalar call with supplied context; retained host geometry has32 positions per sibling lane |
+| Process | Scalar call with supplied context; retained host geometry has 32 positions per sibling lane |
 | Init | Optional unless declared required |
 | Reset | Optional explicit operation; no automatic device reset event is bound |
 
 Raw controls are received values after existing upstream processing, not guaranteed
-instantaneous knob positions or uniform0–127 human units. No firmware offset,
+instantaneous knob positions or uniform 0–127 human units. No firmware offset,
 Machine ID, executable address, heap ownership or final sample clock is part of
 the module API. Modules must not retain borrowed context/parameter/state pointers
 beyond the documented ownership period.
 
 ## Private state certificate
 
-The original72-byte loan was qualified only while actual family12 owns the retained
+The original 72-byte loan was qualified only while actual family 12 owns the retained
 host profile. Other families use that storage. It is not globally free RAM, code
 storage, an allocation or a saved Sound field. Rebinding the host or changing its
 schedule requires rechecking ownership. Arbitrary reset/reactivation persistence

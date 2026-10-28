@@ -54,7 +54,7 @@ typedef struct Machine45Params {
 typedef int32_t Machine45Sample;
 
 /* Optional coordinates that a module may ignore. No extra public controls.
- * Nominal/effective phase are low24 cycle coordinates at the current position.
+ * Nominal/effective phase are low 24-bit cycle coordinates at the current position.
  * slot: 0..7; lane: 1..3; frame: 0..31; reserved: 0.
  * Lane calls are serial sibling streams, not successive 32-frame time blocks.
  * No sample rate, absolute time, note-on/off or inactive event is supplied.

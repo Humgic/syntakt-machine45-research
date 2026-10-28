@@ -5,6 +5,12 @@
 *.hex
 *.asm
 *.disasm
+*.dis
+*.dump
+*.img
+*.rom
+*.s19
+*.srec
 *.o
 *.a
 *.so
@@ -13,6 +19,10 @@
 *.m45pkg
 *.wav
 *.pcm
+*.mp3
+*.flac
+*.aiff
+*.aif
 *.zip
 *.tar
 *.gz
@@ -24,6 +34,13 @@ private/
 evidence/
 .venv/
 __pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .DS_Store
 .env
 .env.*
+*.pem
+*.key
+credentials.json
