@@ -1,0 +1,22 @@
+{
+  "audit_date": "2026-10-28",
+  "repositories": [
+    {
+      "repository": "Angelo-politek/Synthack-OS",
+      "branch": "main",
+      "commit": "c12cf23ad88e68d3f85422a7d09c2a911659997f"
+    },
+    {
+      "repository": "Angelo-politek/Synthack-OS",
+      "branch": "dev",
+      "commit": "76dfe08ba1b2d964495657f4fda775b328342d70"
+    },
+    {
+      "repository": "Rxuting/sy-fm4",
+      "branch": "main",
+      "commit": "a596b6393fc43582fd3ae0234ac04e198b779edb"
+    }
+  ],
+  "discussion": "https://github.com/Angelo-politek/Synthack-OS/issues/1",
+  "note": "Public sources are cited, not vendored. Later changes are not implied verified."
+}

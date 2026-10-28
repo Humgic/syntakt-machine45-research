@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-28",
+  "scope": "Private frozen research artifact provenance, not download links.",
+  "artifacts": [
+    {
+      "role": "MAIN",
+      "private_filename": "Machine45_FULL_STATIC_BRIDGE_MAIN_RESEARCH_ONLY.bin",
+      "size": 3438480,
+      "sha256": "de897a43ff8499781821480c7c249394beb1792ab2652d057795087dbaa6e83d",
+      "distributed": false
+    },
+    {
+      "role": "Section7",
+      "private_filename": "Section7_MACHINE45_V2_BRANCHLESS_RESEARCH_ONLY.bin",
+      "size": 383760,
+      "sha256": "4d8bb919a2447edd67c8cd5b6b5607f1f2789dc0151169af29b959493e72f505",
+      "distributed": false
+    },
+    {
+      "role": "SYX",
+      "private_filename": "Syntakt_OS1.41_Machine45_V2_BRANCHLESS_RESEARCH_ONLY_DO_NOT_FLASH.syx",
+      "size": 5645856,
+      "sha256": "94c59d048057a58ec3cb85b16ec9912e1d86cecb49d5d62f23ddc955ec121d6c",
+      "distributed": false
+    }
+  ]
+}

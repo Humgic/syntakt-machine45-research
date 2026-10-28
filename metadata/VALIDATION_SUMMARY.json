@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-28",
+  "scope": "Private local audit; sanitized summary only.",
+  "whole_device_emulator": "NOT RUN",
+  "hardware": "NOT RUN",
+  "firmware_generated_in_audit": false,
+  "canonical_hashes_matched": true,
+  "original_private_files_preserved": 1754,
+  "packet_checksums_verified": 44108,
+  "section_count": 8,
+  "other_six_sections_unchanged": [
+    5,
+    2,
+    1,
+    4,
+    6,
+    8
+  ],
+  "supplied_MAIN_and_Section7_reextracted_exactly": true,
+  "recorded_MAIN_changed_bytes": 847,
+  "bounded_host_encoded_core": {
+    "cases": 4096,
+    "mismatches": 0,
+    "seed": "0x4520261028",
+    "scope": "Host actual-opcode interpreter + separate integer equation; NOT whole-device emulation."
+  },
+  "bounded_whole_helper": {
+    "cases": 312,
+    "per_family": {
+      "0": 24,
+      "1": 24,
+      "2": 24,
+      "3": 24,
+      "4": 24,
+      "5": 24,
+      "6": 24,
+      "7": 24,
+      "8": 24,
+      "9": 24,
+      "10": 24,
+      "11": 24,
+      "12": 24
+    },
+    "mismatches": 0,
+    "comparison": "Frozen branchless Section7 vs frozen Candidate B parent, actual decoded 340-byte helper.",
+    "scope": "8 slots x 3 lanes x 13 family tags; bounded host interpreter, not full-firmware emulation."
+  },
+  "existing_host_reference_tests": {
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "audio_regenerated": false
+  },
+  "descriptor_records": 505,
+  "admitted_normalizer_records": 315,
+  "normalizer_reconstruction_matches": true,
+  "boot_margin_software_model": {
+    "original": {
+      "decoded_bytes": 3438480,
+      "minimum_margin_bytes": 99938,
+      "community_minimum_margin_bytes": 4096,
+      "passes_community_model": true,
+      "scope": "Pinned SyntHack 1.41 software model only; no device boot/authentication proof."
+    },
+    "candidate": {
+      "decoded_bytes": 3438480,
+      "minimum_margin_bytes": 2096137,
+      "community_minimum_margin_bytes": 4096,
+      "passes_community_model": true,
+      "scope": "Pinned SyntHack 1.41 software model only; no device boot/authentication proof."
+    }
+  },
+  "caveat": "No model/count/hash proves device acceptance, complete persistence or native installation."
+}

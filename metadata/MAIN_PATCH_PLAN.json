@@ -1,0 +1,125 @@
+{
+  "warning": "Not a deployable patch spec. See technical handoff for semantics and unresolved lifetime/compatibility.",
+  "entries": [
+    {
+      "purpose": "MachineListView candidate loop terminal",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x40026556",
+      "file_start": "0x26156",
+      "length": 2,
+      "expected_original_sha256": "64518f9ba578f86b5d0297815a8f63bc3c1ea33e07982ffb6f2532a84843fea5",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "page metadata accessor",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x4007b9ea",
+      "file_start": "0x7b5ea",
+      "length": 30,
+      "expected_original_sha256": "2cf5d1fd3ff97d11e12f83fc46c5d5442ff0da178d596efbce5cef7f516f352e",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "normalizer-matrix bound",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x400a6422",
+      "file_start": "0xa6022",
+      "length": 2,
+      "expected_original_sha256": "40076d360206a908edd1a23334176097f0d559927489790e6653245b42e963b1",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "normalizer-matrix base operand",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x400a644a",
+      "file_start": "0xa604a",
+      "length": 4,
+      "expected_original_sha256": "14d54b8e6c06fa743062b8520dcf4c4479887523785ddd9ec84237f71ea5330d",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "compatibility-helper bound",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x400a647c",
+      "file_start": "0xa607c",
+      "length": 2,
+      "expected_original_sha256": "b5c513f12395beff46023b12540526a4ce4eccde74211910f26607f220189778",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "compatibility-mask base operand",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x400a6494",
+      "file_start": "0xa6094",
+      "length": 4,
+      "expected_original_sha256": "4e5ae502888129de591a7e6111414b19a1aaada633b13e3f42f4e71f233a331f",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "display-record row bound",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x400a6522",
+      "file_start": "0xa6122",
+      "length": 2,
+      "expected_original_sha256": "40076d360206a908edd1a23334176097f0d559927489790e6653245b42e963b1",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "track-storage load bound",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x400a7018",
+      "file_start": "0xa6c18",
+      "length": 2,
+      "expected_original_sha256": "b29edf0cce954f7ebc080c723f9df03c230bf302d797f8db445a17d2d131e083",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "Machine-0 display record copied to row 45",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x4022c824",
+      "file_start": "0x22c424",
+      "length": 132,
+      "expected_original_sha256": "28c7fec19c59ffc332ea911c8fde046a5c18c33d9d94d5fc0c4823d201628bd6",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "46-row compatibility-mask copy",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x40344990",
+      "file_start": "0x344590",
+      "length": 184,
+      "expected_original_sha256": "d81bfb50e59a9abbe66f6ae0c6b45c7b9c0bc6eead2cf982118ac4d62b6ffeda",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "46-by-10 normalizer-matrix copy",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x40344a48",
+      "file_start": "0x344648",
+      "length": 1840,
+      "expected_original_sha256": "e830a58c5fb341b0909304355d8035c82c8f09fcb9da49f537bfc4717a9b246d",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    },
+    {
+      "purpose": "same-track exact45 compact serializer override",
+      "firmware": "1.41",
+      "section": 3,
+      "va_start": "0x400a4c7a",
+      "file_start": "0xa487a",
+      "length": 166,
+      "expected_original_sha256": "8e289e448e360d7986d48e28131ee738a391b63ddae7db4ed693f07d75c0a8fd",
+      "status": "Historical private candidate; semantic design only; no patch bytes distributed."
+    }
+  ]
+}
